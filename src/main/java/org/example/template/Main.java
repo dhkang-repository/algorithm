@@ -1,4 +1,4 @@
-package org.example;
+package org.example.template;
 import java.io.*;
 import java.util.*;
 
