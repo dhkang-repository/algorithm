@@ -23,26 +23,20 @@ public class P20922 {
             }
         }
         int[] inf = new int[max + 1];
-        int l = 0, r = 0;
-        int cnt = Integer.MIN_VALUE;
-        while(r < N && l <= r) {
-            if(inf[arr[r]] < K) {
-                inf[arr[r]]++;
-                r++;
-                cnt = Math.max(cnt, r - l);
-            }
-            else {
+        int l = 0;
+        int maxLen = 0;
+        for (int r = 0; r < N; r++) {
+            int v = arr[r];
+            inf[v]++;
+            while (inf[v] > K) {
                 inf[arr[l]]--;
                 l++;
             }
+            maxLen = Math.max(maxLen, r - l + 1);
         }
 
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-        if(cnt == Integer.MIN_VALUE) {
-            bw.write(0 + "\n");
-        } else {
-            bw.write(cnt + "\n");
-        }
+        bw.write(maxLen + "\n");
         bw.flush();
         bw.close();
     }
